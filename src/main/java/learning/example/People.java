@@ -3,14 +3,14 @@ package learning.example;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class User {
+public class People {
 
     private int id;
     private String name;
     private String username;
     private String email;
 
-    public User() {
+    public People() {
     }
 
     public int getId() {
