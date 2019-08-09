@@ -2,11 +2,16 @@ package learning.example.service;
 
 import learning.example.PeopleData;
 import learning.example.Person;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PersonServiceImpl implements PersonService {
+
+    // == constants //
+    private static final Logger log = LoggerFactory.getLogger(PersonServiceImpl.class);
 
     // == fields ==
     private final PeopleData data;
