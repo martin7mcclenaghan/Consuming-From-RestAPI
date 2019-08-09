@@ -13,8 +13,8 @@ public class Main {
 
     public static void main(String[] args) {
         RestTemplate restTemplate = new RestTemplate();
-        People[] people = new People[10];
-        people = restTemplate.getForObject("https://jsonplaceholder.typicode.com/users", People[].class);
+        Person[] people = new Person[10];
+        people = restTemplate.getForObject("https://jsonplaceholder.typicode.com/users", Person[].class);
         log.info(Arrays.toString(people));
     }
 }

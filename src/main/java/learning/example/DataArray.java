@@ -16,7 +16,7 @@ public class DataArray {
 
     // == fields ==
     private final RestTemplate restTemplate;
-    public People [] peopleArray;
+    public Person[] peopleArray;
 
     // == constructors ==
     @Autowired
@@ -27,15 +27,16 @@ public class DataArray {
     // == init ==
     @PostConstruct
     public void getDataArray (){
-        peopleArray = restTemplate.getForObject("https://jsonplaceholder.typicode.com/users", People[].class);
+        peopleArray = restTemplate.getForObject("https://jsonplaceholder.typicode.com/users", Person[].class);
 
-        for(People person : peopleArray){
-
-            log.info(person.toString());
-        }
+//        for(Person person : peopleArray){
+//
+//            log.info(person.toString());
+//        }
 
     }
 
-
-
+    public Person[] getPeopleArray() {
+        return peopleArray;
+    }
 }
