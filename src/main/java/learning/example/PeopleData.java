@@ -66,7 +66,7 @@ public class PeopleData {
         return null;
     }
 
-    public void updateItem(Person toUpdate){
+    public void updatePerson(Person toUpdate){
 
         if(toUpdate == null){
             throw new NullPointerException("toUpdate is a required parameter");
