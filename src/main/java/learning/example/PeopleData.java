@@ -16,7 +16,7 @@ public class PeopleData {
     private static final Logger log = LoggerFactory.getLogger(PeopleData.class);
 
     // == fields ==
-    private final List<Person> personList;
+    public final List<Person> personList;
     private final DataArray dataArray;
 
     //== constructor ==
