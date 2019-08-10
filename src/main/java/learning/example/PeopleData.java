@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -16,7 +17,7 @@ public class PeopleData {
     private static final Logger log = LoggerFactory.getLogger(PeopleData.class);
 
     // == fields ==
-    public final List<Person> personList;
+    private final List<Person> personList;
     private final DataArray dataArray;
 
     //== constructor ==
@@ -28,6 +29,9 @@ public class PeopleData {
     }
 
     // == public methods ==
+    public List<Person> getPersonList() {
+        return Collections.unmodifiableList(personList);
+    }
 
     public void addPerson (Person toAdd){
 
