@@ -1,8 +1,10 @@
 package learning.example.controller;
 
 import learning.example.PeopleData;
+import learning.example.Person;
 import learning.example.service.PersonService;
 import learning.example.util.AttributeNames;
+import learning.example.util.Mappings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,10 +35,18 @@ public class PersonController {
     }
 
     // == handler methods ==
-    @GetMapping("list")
+    @GetMapping(Mappings.LIST)
     public String openList (Model model){
         log.info("Model = {}", model);
         return "item_list";
+    }
+
+    //method used to create new item or edit existing
+    @GetMapping("addItem")
+    public String addEditItem (Model model){
+        Person person = new Person("", "", "");
+        model.addAttribute("newPerson", person);
+        return "add_item";
     }
 
 

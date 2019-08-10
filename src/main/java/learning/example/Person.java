@@ -5,14 +5,20 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Person {
 
+    // == fields ==
     private int id;
     private String name;
     private String username;
     private String email;
 
-    public Person() {
+    // == constructor ==
+    public Person(String name, String username, String email) {
+        this.name = name;
+        this.username = username;
+        this.email = email;
     }
 
+    // == public methods ==
     public int getId() {
         return id;
     }
