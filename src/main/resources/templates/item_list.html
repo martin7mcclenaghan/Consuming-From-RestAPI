@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Persons</title>
+</head>
+<body>
+<div align="center">
+    <table border="1" cellpadding="5">
+
+        <caption><h2>Todo Items</h2></caption>
+
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Email</th>
+        </tr>
+
+        <tr th:each="person : ${PeopleData1.personList}">
+            <td th:text="${person.id}">Id</td>
+            <td th:text="${person.name}">name</td>
+            <td th:text="${person.username}">username</td>
+            <td th:text="${person.email}">email</td>
+        </tr>
+    </table>
+
+
+</div>
+</body>
+</html>

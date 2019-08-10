@@ -5,5 +5,7 @@
 target/
 mvnw
 *.cmd
-src/main/resources/
+src/main/resources/static/
+src/main/resources/application.properties
+src/main/resources/logback-spring.xml
 src/test
