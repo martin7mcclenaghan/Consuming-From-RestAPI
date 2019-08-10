@@ -29,6 +29,7 @@ public class PeopleData {
     }
 
     // == public methods ==
+    //getter will be used implicitly by thymeleaf when model attribute is called  ${PeopleData1.personList}
     public List<Person> getPersonList() {
         return Collections.unmodifiableList(personList);
     }

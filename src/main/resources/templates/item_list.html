@@ -8,7 +8,7 @@
 <div align="center">
     <table border="1" cellpadding="5">
 
-        <caption><h2>Todo Items</h2></caption>
+        <caption><h2>User Data from JSON Placeholder</h2></caption>
 
         <tr>
             <th>Id</th>
@@ -17,7 +17,7 @@
             <th>Email</th>
         </tr>
 
-        <tr th:each="person : ${PeopleData1.personList}">
+        <tr th:each="person : ${peopleData.personList}">
             <td th:text="${person.id}">Id</td>
             <td th:text="${person.name}">name</td>
             <td th:text="${person.username}">username</td>

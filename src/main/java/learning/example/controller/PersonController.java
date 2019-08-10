@@ -2,6 +2,7 @@ package learning.example.controller;
 
 import learning.example.PeopleData;
 import learning.example.service.PersonService;
+import learning.example.util.AttributeNames;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class PersonController {
     }
 
     // == model attribute ==
-    @ModelAttribute("PeopleData1")
+    @ModelAttribute(AttributeNames.PEOPLE_DATA)
     public PeopleData peopleData (){
         return personService.getData();
     }
