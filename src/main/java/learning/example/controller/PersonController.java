@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class PersonController {
@@ -57,6 +58,15 @@ public class PersonController {
         personService.addPerson(personToAdd);
         return "redirect:/" + Mappings.LIST;
     }
+
+    //method adds selected Person as model attribute and returns view_item
+    @GetMapping("viewItem")
+    public String viewItem (@RequestParam int id, Model model){
+        Person person = personService.getPerson(id);
+        model.addAttribute("person", person);
+        return "view_item";
+    }
+
 
 
 }

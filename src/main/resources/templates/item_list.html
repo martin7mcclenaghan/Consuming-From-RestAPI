@@ -15,6 +15,7 @@
             <th>Name</th>
             <th>Username</th>
             <th>Email</th>
+            <th>Edit</th>
         </tr>
 
         <tr th:each="person : ${peopleData.personList}">
@@ -22,6 +23,7 @@
             <td th:text="${person.name}">name</td>
             <td th:text="${person.username}">username</td>
             <td th:text="${person.email}">email</td>
+            <td><a th:href="@{viewItem(id=${person.id})}">Edit?</a></td>
         </tr>
     </table>
 
