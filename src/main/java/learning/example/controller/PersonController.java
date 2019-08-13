@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class PersonController {
@@ -47,6 +48,14 @@ public class PersonController {
         Person person = new Person("", "", "");
         model.addAttribute("newPerson", person);
         return "add_item";
+    }
+
+   //method processes form from add_item page
+    @PostMapping("addItem")
+    public String processItem (@ModelAttribute("newPerson") Person personToAdd){
+        log.info("Added Person from form = {}", personToAdd);
+        personService.addPerson(personToAdd);
+        return "redirect:/" + Mappings.LIST;
     }
 
 

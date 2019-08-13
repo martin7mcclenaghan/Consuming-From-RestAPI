@@ -5,10 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 @Component
 public class PeopleData {
@@ -23,7 +20,7 @@ public class PeopleData {
     //== constructor ==
     @Autowired
     public PeopleData(DataArray dataArray) {
-        this.personList = Arrays.asList(dataArray.getPeopleArray());
+        this.personList = new ArrayList<>(Arrays.asList(dataArray.getPeopleArray()));
         this.dataArray = dataArray;
         log.info("Person List = {}", personList);
     }
