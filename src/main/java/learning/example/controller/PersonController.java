@@ -45,8 +45,14 @@ public class PersonController {
 
     //method used to create new item or edit existing
     @GetMapping("addItem")
-    public String addEditItem (Model model){
-        Person person = new Person("", "", "");
+    public String addEditItem (@RequestParam(required = false, defaultValue = "0") int id, Model model){
+        log.info("Editing item with id {}", id);
+        Person person = personService.getPerson(id);
+
+        if(person == null){
+            person = new Person("", "", "");
+        }
+
         model.addAttribute("newPerson", person);
         return "add_item";
     }
