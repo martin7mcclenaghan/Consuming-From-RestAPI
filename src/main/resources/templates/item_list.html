@@ -16,6 +16,7 @@
             <th>Username</th>
             <th>Email</th>
             <th>Edit</th>
+            <th>Delete</th>
         </tr>
 
         <tr th:each="person : ${peopleData.personList}">
@@ -23,7 +24,8 @@
             <td th:text="${person.name}">name</td>
             <td th:text="${person.username}">username</td>
             <td th:text="${person.email}">email</td>
-            <td><a th:href="@{viewItem(id=${person.id})}">Edit?</a></td>
+            <td><a th:href="@{viewItem(id=${person.id})}">View</a></td>
+            <td><a th:href="@{deleteItem(id=${person.id})}">Delete?</a> </td>
         </tr>
     </table>
 

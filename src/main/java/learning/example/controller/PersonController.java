@@ -67,6 +67,14 @@ public class PersonController {
         return "view_item";
     }
 
+    //method deletes selected Person from the ArrayList and redirects to the item_list view
+    @GetMapping("deleteItem")
+    public String deleteItem (@RequestParam int id){
+        log.info("Deleting Person with id {}", id);
+        personService.removePerson(id);
+        return "redirect:/" + Mappings.LIST;
+    }
+
 
 
 }
