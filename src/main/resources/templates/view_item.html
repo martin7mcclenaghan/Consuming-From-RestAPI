@@ -29,6 +29,16 @@
             <td th:text="${person.email}"></td>
         </tr>
 
+        <tr>
+            <td><label>Edit</label></td>
+            <td><a th:href="@{addItem(id=${person.id})}">Edit?</a></td>
+        </tr>
+
+        <tr>
+            <td><label>Delete</label></td>
+            <td><a th:href="@{deleteItem(id=${person.id})}">Delete?</a> </td>
+        </tr>
+
     </table>
 
     <h3>

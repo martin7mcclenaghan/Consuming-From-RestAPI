@@ -45,23 +45,34 @@ public class PersonController {
 
     //method used to create new item or edit existing
     @GetMapping("addItem")
-    public String addEditItem (@RequestParam(required = false, defaultValue = "0") int id, Model model){
+    public String addEditItem (@RequestParam(required = false) int id, Model model){
         log.info("Editing item with id {}", id);
         Person person = personService.getPerson(id);
 
         if(person == null){
+            log.info("New person created");
             person = new Person("", "", "");
         }
 
-        model.addAttribute("newPerson", person);
+        log.info("Person added as model attribute {}", person);
+        model.addAttribute(Mappings.NEW_PERSON, person);
+
         return "add_item";
     }
 
    //method processes form from add_item page
     @PostMapping("addItem")
-    public String processItem (@ModelAttribute("newPerson") Person personToAdd){
-        log.info("Added Person from form = {}", personToAdd);
-        personService.addPerson(personToAdd);
+    public String processItem (@ModelAttribute(Mappings.NEW_PERSON) Person person){
+
+        if(person.getId() == 0){
+            log.info("New Person added from form {}", person);
+            personService.addPerson(person);
+
+        }else{
+            log.info("Person updated from form {}", person);
+            personService.updatePerson(person);
+        }
+
         return "redirect:/" + Mappings.LIST;
     }
 
