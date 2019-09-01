@@ -2,29 +2,35 @@ package learning.example;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Entity
 public class Person {
 
     // == fields ==
-    private int id;
+    @Id
+    @GeneratedValue
+    //cannot simply call "id" as this will map to part of JSON data - want this created by database
+    private int idNumber;
     private String name;
     private String username;
     private String email;
 
-    // == constructor ==
-    public Person(String name, String username, String email) {
-        this.name = name;
-        this.username = username;
-        this.email = email;
+    // == constructors ==
+    // protected default constructor for benefit of JPA
+    public Person() {
     }
 
     // == public methods ==
-    public int getId() {
-        return id;
+    public int getIdNumber() {
+        return idNumber;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdNumber(int idNumber) {
+        this.idNumber = idNumber;
     }
 
     public String getName() {
@@ -52,28 +58,25 @@ public class Person {
     }
 
     @Override
-    public int hashCode() {
-        return id;
-    }
-
-    @Override
     public boolean equals(Object obj) {
         if(this == obj) return true;
         if(!(obj instanceof Person)) return false;
 
         Person person = (Person) obj;
 
-        return id == person.id;
+        return idNumber == person.idNumber;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "id=" + idNumber +
                 ", name=" + name +
                 ", username=" + username +
                 ", email=" + username +
                 '}' + "\n";
 
     }
+
+
 }
