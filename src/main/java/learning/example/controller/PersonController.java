@@ -7,10 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -43,9 +40,9 @@ public class PersonController {
         return "person_list";
     }
 
-    //method used to create new item
+    //method used to create new person
     @GetMapping("addPerson")
-    public String addEditItem(Model model) {
+    public String createPerson(Model model) {
 
         log.info("New Person object created");
         Person person = new Person();
@@ -54,16 +51,16 @@ public class PersonController {
         return "create_person";
     }
 
-    //method processes form from add_item page
+    //method processes form from create_person page
     @PostMapping("addPerson")
-    public String processItem(@ModelAttribute("newPerson") Person person) {
+    public String processPerson(@ModelAttribute("newPerson") Person person) {
 
         log.info("New Person added from form {}", person);
         personService.createPerson(person);
         return "redirect:/list";
     }
 
-    //method adds selected Person as model attribute and returns view_item
+    //method adds selected Person as model attribute and returns view_person
     @GetMapping("viewPerson")
     public String viewPerson (@RequestParam int id, Model model){
         Person person = personService.readPerson(id);
@@ -71,6 +68,23 @@ public class PersonController {
         model.addAttribute("person", person);
         return "view_person";
     }
+
+    @GetMapping("editPerson")
+    public String edit(@RequestParam int id, Model model) {
+        Person person = personService.readPerson(id);
+        log.info("Editing person with id {}, {}", id, person);
+        model.addAttribute("person", person);
+        return "update_person";
+    }
+
+
+    @PostMapping("editPerson")
+    public String update(@ModelAttribute("person") Person person) {
+        log.info("Person updated from form {}", person);
+        personService.updatePerson(person);
+        return "redirect:/list";
+    }
+
 
 
 
