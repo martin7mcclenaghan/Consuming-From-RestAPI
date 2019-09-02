@@ -33,7 +33,7 @@ public class PersonController {
     }
 
     // == handler methods ==
-    //method to show list of records from db
+    //method to show list of records from database
     @GetMapping("list")
     public String openList(Model model) {
         log.info("Model = {}", model);
@@ -69,6 +69,7 @@ public class PersonController {
         return "view_person";
     }
 
+    //method used to edit an existing record
     @GetMapping("editPerson")
     public String updatePerson(@RequestParam int id, Model model) {
         Person person = personService.readPerson(id);
@@ -77,7 +78,7 @@ public class PersonController {
         return "update_person";
     }
 
-
+    //method processes form from update_person view
     @PostMapping("editPerson")
     public String processUpdatePerson(@ModelAttribute("person") Person person) {
         log.info("Person updated from form {}", person);
@@ -85,6 +86,7 @@ public class PersonController {
         return "redirect:/list";
     }
 
+    //method deletes record from database and returns to list
     @GetMapping("deletePerson")
     public String deletePerson (@RequestParam int id) {
         log.info("Deleting Person with id {}", id);
