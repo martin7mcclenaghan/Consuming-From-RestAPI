@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View Item</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>Person</h1>
+
+    <table class="table table-hover table-striped">
+        <tr>
+            <td><label>ID</label></td>
+            <td th:text="${person.idNumber}"></td>
+        </tr>
+
+        <tr>
+            <td><label>Name</label></td>
+            <td th:text="${person.name}"></td>
+        </tr>
+
+        <tr>
+            <td><label>UserName</label></td>
+            <td th:text="${person.username}"></td>
+        </tr>
+
+        <tr>
+            <td><label>Email</label></td>
+            <td th:text="${person.email}"></td>
+        </tr>
+    </table>
+
+    <a class="btn btn-primary" th:href="@{'/people/' + ${person.idNumber} + '/edit'}">Edit</a>
+    <a class="btn btn-danger" th:href="@{'/people/' + ${person.idNumber} + '/delete'}">Delete</a>
+    <a class="btn btn-link" href="list">Return to list</a>
+</div>
+
+</body>
+</html>

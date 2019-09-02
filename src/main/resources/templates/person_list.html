@@ -35,7 +35,7 @@
                 <td th:text="${person.name}">name</td>
                 <td th:text="${person.username}">username</td>
                 <td th:text="${person.email}">email</td>
-                <td><a th:href="@{viewItem(id=${person.idNumber})}">View</a></td>
+                <td><a th:href="@{viewPerson(id=${person.idNumber})}">View</a></td>
                 <td><a th:href="@{addItem(id=${person.idNumber})}">Edit?</a></td>
                 <td><a th:href="@{deleteItem(id=${person.idNumber})}">Delete?</a> </td>
             </tr>

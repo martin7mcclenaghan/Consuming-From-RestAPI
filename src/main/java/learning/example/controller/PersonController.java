@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -60,6 +61,15 @@ public class PersonController {
         log.info("New Person added from form {}", person);
         personService.createPerson(person);
         return "redirect:/list";
+    }
+
+    //method adds selected Person as model attribute and returns view_item
+    @GetMapping("viewPerson")
+    public String viewPerson (@RequestParam int id, Model model){
+        Person person = personService.readPerson(id);
+        log.info("Showing person with id {}, {}", id, person);
+        model.addAttribute("person", person);
+        return "view_person";
     }
 
 
