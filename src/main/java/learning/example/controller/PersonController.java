@@ -1,6 +1,6 @@
 package learning.example.controller;
 
-import learning.example.Person;
+import learning.example.model.Person;
 import learning.example.service.PersonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

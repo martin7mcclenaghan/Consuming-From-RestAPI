@@ -1,6 +1,6 @@
 package learning.example.service;
 
-import learning.example.Person;
+import learning.example.model.Person;
 
 import java.util.List;
 

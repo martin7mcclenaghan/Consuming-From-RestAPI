@@ -1,4 +1,4 @@
-package learning.example;
+package learning.example.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
