@@ -14,3 +14,12 @@ Complete list of technologies:
 - Use of Spring Boot Data JPA
 - Use of Thymeleaf
 - Use of Bootstrap
+
+My current task is to replace the hard coded Strings used to name Model
+Attributes and Get/Post mappings with constants. This will make the application 
+easier to maintain moving forward as changes can be made in one place.
+This will be done in the mappings package which I am still working on.
+
+I could also decouple the thymeleaf logic from the html but I am dubious as 
+to the usefulness of this as I find it can make the templates more difficult to
+follow and maintain.
