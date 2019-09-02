@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Add Person</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>Create New Person</h1>
+
+    <form action="addPerson" th:object="${newPerson}" method="post" novalidate>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" th:field="*{name}" />
+        </div>
+
+        <div class="form-group">
+            <label for="name">Username</label>
+            <input type="text" class="form-control" id="username" th:field="*{username}" />
+        </div>
+
+        <div class="form-group">
+            <label for="name">Email</label>
+            <input type="email" class="form-control" id="email" th:field="*{email}" />
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+
+</div>
+
+</body>
+</html>
