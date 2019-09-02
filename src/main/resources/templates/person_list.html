@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Persons</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container my-5">
+    <div class="jumbotron">
+        <h1>People</h1>
+        <p>These are all the people in the application.</p>
+        <p><a class="btn btn-primary btn-lg" href="addPerson" role="button">Add Person</a></p>
+    </div>
+
+    <div align="center">
+        <table border="1" cellpadding="5">
+
+            <caption><h2>User Data from JSON Placeholder</h2></caption>
+
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>View</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+
+            <tr th:each="person : ${people}">
+                <td th:text="${person.idNumber}">Id</td>
+                <td th:text="${person.name}">name</td>
+                <td th:text="${person.username}">username</td>
+                <td th:text="${person.email}">email</td>
+                <td><a th:href="@{viewItem(id=${person.idNumber})}">View</a></td>
+                <td><a th:href="@{addItem(id=${person.idNumber})}">Edit?</a></td>
+                <td><a th:href="@{deleteItem(id=${person.idNumber})}">Delete?</a> </td>
+            </tr>
+        </table>
+
+        <h3>
+            <a th:href="@{addPerson}">Add someone to the list!</a>
+        </h3>
+
+
+    </div>
+</div>
+</body>
+</html>
