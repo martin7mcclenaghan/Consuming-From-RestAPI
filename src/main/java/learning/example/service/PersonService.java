@@ -1,13 +1,18 @@
 package learning.example.service;
 
-import learning.example.PeopleData;
 import learning.example.Person;
+
+import java.util.List;
 
 public interface PersonService {
 
-    void addPerson(Person toAdd);
-    void removePerson (int id);
-    Person getPerson (int id);
+    void createPerson(Person toAdd);
+
+    Person readPerson (int id);
+
     void updatePerson (Person toUpdate);
-    PeopleData getData();
+
+    void deletePerson (int id);
+
+    List<Person> readAll();
 }
