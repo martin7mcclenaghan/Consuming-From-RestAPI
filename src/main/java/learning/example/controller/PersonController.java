@@ -14,7 +14,7 @@ import java.util.List;
 @Controller
 public class PersonController {
 
-    // == constants //
+    // == constants ==
     private static final Logger log = LoggerFactory.getLogger(PersonController.class);
 
     // == fields ==
