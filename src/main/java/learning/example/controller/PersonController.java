@@ -70,7 +70,7 @@ public class PersonController {
     }
 
     @GetMapping("editPerson")
-    public String edit(@RequestParam int id, Model model) {
+    public String updatePerson(@RequestParam int id, Model model) {
         Person person = personService.readPerson(id);
         log.info("Editing person with id {}, {}", id, person);
         model.addAttribute("person", person);
@@ -79,9 +79,16 @@ public class PersonController {
 
 
     @PostMapping("editPerson")
-    public String update(@ModelAttribute("person") Person person) {
+    public String processUpdatePerson(@ModelAttribute("person") Person person) {
         log.info("Person updated from form {}", person);
         personService.updatePerson(person);
+        return "redirect:/list";
+    }
+
+    @GetMapping("deletePerson")
+    public String deletePerson (@RequestParam int id) {
+        log.info("Deleting Person with id {}", id);
+        personService.deletePerson(id);
         return "redirect:/list";
     }
 
