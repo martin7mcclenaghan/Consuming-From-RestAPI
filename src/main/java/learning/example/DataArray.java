@@ -20,7 +20,7 @@ public class DataArray {
 
     // == constructors ==
     @Autowired
-    public DataArray(@RestAnn RestTemplate restTemplate) {
+    public DataArray(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
