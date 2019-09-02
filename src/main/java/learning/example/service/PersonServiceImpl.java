@@ -1,11 +1,13 @@
 package learning.example.service;
 
-import learning.example.PeopleData;
 import learning.example.Person;
+import learning.example.repository.PersonRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class PersonServiceImpl implements PersonService {
@@ -14,41 +16,44 @@ public class PersonServiceImpl implements PersonService {
     private static final Logger log = LoggerFactory.getLogger(PersonServiceImpl.class);
 
     // == fields ==
-    private final PeopleData data;
+    private PersonRepository personRepository;
 
     // == constructor ==
     @Autowired
-    public PersonServiceImpl(PeopleData data) {
-        this.data = data;
+    public PersonServiceImpl(PersonRepository personRepository) {
+        this.personRepository = personRepository;
     }
 
-    // == public methods ==
-    //service calls logic in People Data Class defined to act on the
-    //Array List of Data
 
+    // == implemented public methods ==
     @Override
-    public void addPerson(Person toAdd) {
-        data.addPerson(toAdd);
-    }
-
-    @Override
-    public void removePerson(int id) {
-        data.removePerson(id);
+    public Person createPerson(Person toAdd) {
+        log.info("Creating new person record: {}", toAdd);
+        return personRepository.save(toAdd);
     }
 
     @Override
-    public Person getPerson(int id) {
-        return data.getPerson(id);
+    public Person readPerson(int id) {
+        log.info("Reading record with id: {}", id);
+        return personRepository.getOne(id);
     }
 
     @Override
-    public void updatePerson(Person toUpdate) {
-        data.updatePerson(toUpdate);
+    public Person updatePerson(Person toUpdate) {
+        log.info("Updating person record: {}", toUpdate);
+        return personRepository.save(toUpdate);
+    }
+
+    @Override
+    public void deletePerson(int id) {
+        log.info("Deleting person record with id: {}", id);
+        personRepository.deleteById(id);
 
     }
 
     @Override
-    public PeopleData getData() {
-        return data;
+    public List<Person> readAll() {
+        log.info("Returning all records");
+        return personRepository.findAll();
     }
 }
